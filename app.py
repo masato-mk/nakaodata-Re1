@@ -153,9 +153,6 @@ def steam_water():
     plt.tight_layout()
     plt.legend(loc='upper left',fontsize=20)
 
-
-
-  
     xx = 3.5/(18+3.5)
     ss = xx*q/(1-xx) 
 
@@ -173,8 +170,22 @@ def steam_water():
     plt.legend(loc='upper left',fontsize=20)
     img02 = fig_to_base64_img(fig02)
     img03 = fig_to_base64_img(fig03)
+    
+    
+    fig04 = plt.figure(figsize=(15,6))
+    ax = plt.axes()
+    plt.plot(valve,label="valve")
+    plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%m-%d'))
+    plt.xlabel('month-day',fontsize=18)
+    plt.ylabel("opening %",fontsize=18)
+    # plt.ylim(0,0.5)
+    plt.grid()
+    plt.tick_params(labelsize=18)
+    plt.tight_layout()
+    plt.legend(loc='upper left',fontsize=20)
+    img04 = fig_to_base64_img(fig04)
 
-    return render_template('steam_water.html',img02=img02,img03=img03)
+    return render_template('steam_water.html',img02=img02,img03=img03,img04)
 
 @app.route('/steam_water_well')
 def steam_water_well():
